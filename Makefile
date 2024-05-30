@@ -10,6 +10,7 @@ RESET 	= "\033[1;0m"
 #
 NAME 	= libasm.a
 CC 		= gcc
+FLAGS   = -g3 -fsanitize=address
 
 # PATHS #
 #
@@ -54,8 +55,9 @@ $(OBJ_PATH)/%.o: $(BONUS_PATH)/%.s | $(OBJ_PATH)
 	nasm -f elf64 $< -o $@
 
 test: all
-	gcc -no-pie test/ft_strlen.c $(NAME) -lc && ./a.out
-
+	gcc -no-pie $(FLAGS) test/ft_strlen.c $(NAME) -lc && ./a.out
+	gcc -no-pie $(FLAGS) test/ft_strcpy.c $(NAME) -lc && ./a.out
+	gcc -no-pie $(FLAGS) test/ft_strcmp.c $(NAME) -lc && ./a.out
 
 clean:
 	rm -rf $(NAME)
