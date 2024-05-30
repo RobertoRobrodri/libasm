@@ -53,6 +53,10 @@ bonus: $(OBJS_BONUS)
 $(OBJ_PATH)/%.o: $(BONUS_PATH)/%.s | $(OBJ_PATH)
 	nasm -f elf64 $< -o $@
 
+test: all
+	gcc -no-pie test/ft_strlen.c $(NAME) -lc && ./a.out
+
+
 clean:
 	rm -rf $(NAME)
 

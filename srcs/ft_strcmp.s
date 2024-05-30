@@ -3,9 +3,8 @@ section .text
 
 _ft_strcmp:
 	xor eax, eax
-	call _ft_loop
 
-_ft_loop:
+loop:
 	mov al, [rdi] ; mov to al to compare byte by byte
 	mov bl, [rsi]
 	cmp al, bl
@@ -16,7 +15,7 @@ _ft_loop:
 	je _ft_return
 	inc rdi
 	inc rsi
-	jmp _ft_loop
+	jmp loop
 
 _ft_return:
 	sub al, bl ; return difference
