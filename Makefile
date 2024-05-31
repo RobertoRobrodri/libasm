@@ -35,6 +35,9 @@ OBJS	= $(addprefix $(OBJ_PATH)/, $(SRC:%.s=%.o))
 SRCS_BONUS = $(addprefix $(BONUS_PATH)/, $(SRC_BONUS))
 OBJS_BONUS = $(addprefix $(OBJ_PATH)/, $(SRC_BONUS:%.s=%.o))
 
+TEST_SRC = $(addprefix $(TEST_PATH)/, $(SRC:%.s=%.c))
+TEST_BIN = $(TEST_SRC:%.c=%)
+
 all: $(NAME)
 
 $(OBJ_PATH):
@@ -54,18 +57,17 @@ bonus: $(OBJS_BONUS)
 $(OBJ_PATH)/%.o: $(BONUS_PATH)/%.s | $(OBJ_PATH)
 	nasm -f elf64 $< -o $@
 
-test: all
-	gcc -no-pie $(FLAGS) test/ft_strlen.c $(NAME) -lc -o ft_strlen
-	gcc -no-pie $(FLAGS) test/ft_strcpy.c $(NAME) -lc -o ft_strcpy
-	gcc -no-pie $(FLAGS) test/ft_strcmp.c $(NAME) -lc -o ft_strcmp
-	gcc -no-pie $(FLAGS) test/ft_strdup.c $(NAME) -lc -o ft_strdup
-	gcc -no-pie $(FLAGS) test/ft_write.c $(NAME) -lc -o ft_write
+test: $(NAME) $(TEST_BIN)
+
+$(TEST_BIN): % : %.c $(NAME)
+	$(CC) -no-pie $(FLAGS) $< $(NAME) -lc -o $@
+	@echo "Compiled $@ successfully."
 
 clean:
 	rm -rf $(NAME)
 
 fclean:
-	rm -rf $(NAME) $(OBJ_PATH)
+	rm -rf $(NAME) $(OBJ_PATH) $(TEST_BIN)
 
 re: fclean all
 
