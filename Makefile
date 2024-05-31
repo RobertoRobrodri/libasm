@@ -36,7 +36,7 @@ SRCS_BONUS = $(addprefix $(BONUS_PATH)/, $(SRC_BONUS))
 OBJS_BONUS = $(addprefix $(OBJ_PATH)/, $(SRC_BONUS:%.s=%.o))
 
 TEST_SRC = $(addprefix $(TEST_PATH)/, $(SRC:%.s=%.c))
-TEST_BIN = $(TEST_SRC:%.c=%)
+TEST_BIN = $(TEST_SRC:%.c=%_test)
 
 all: $(NAME)
 
@@ -59,7 +59,7 @@ $(OBJ_PATH)/%.o: $(BONUS_PATH)/%.s | $(OBJ_PATH)
 
 test: $(NAME) $(TEST_BIN)
 
-$(TEST_BIN): % : %.c $(NAME)
+$(TEST_BIN): %_test : %.c
 	$(CC) -no-pie $(FLAGS) $< $(NAME) -lc -o $@
 	@echo "Compiled $@ successfully."
 

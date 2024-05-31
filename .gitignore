@@ -3,3 +3,4 @@ objects
 a.out
 libasm.a
 .vscode
+*_test
