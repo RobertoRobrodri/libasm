@@ -8,7 +8,7 @@
 # define YELLOW "\033[0;33m"
 # define BIG_STRING "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
-extern int   _ft_strcmp(const char *s1, const char *s2);
+extern int   ft_strcmp(const char *s1, const char *s2);
 
 int main() {
     char *str[] = {"Hola\n", "Caracola", "", BIG_STRING};
@@ -16,7 +16,7 @@ int main() {
 	{
 		// compare with itself expected result == 0
 		int expected_result = strcmp(str[i], str[i]);
-		int result = _ft_strcmp(str[i], str[i]);
+		int result = ft_strcmp(str[i], str[i]);
 		if (result == expected_result)
 			printf(GREEN"OK\n");
 		else
@@ -24,7 +24,7 @@ int main() {
 		
 		// compare with a different one expected result > 0
 		expected_result = strcmp(str[i], "random string");
-		result = _ft_strcmp(str[i], "random string");
+		result = ft_strcmp(str[i], "random string");
 		if (result == expected_result)
 			printf(GREEN"OK\n");
 		else

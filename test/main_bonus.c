@@ -11,7 +11,7 @@ typedef struct s_list
 } t_list;
 
 // Declare the assembly function
-extern int   _ft_list_size(t_list *lst);
+extern int   ft_list_size(t_list *lst);
 
 t_list *lst_new(void *data)
 {
@@ -49,6 +49,6 @@ int main(void)
 	for (int i = 0; i < 10; i++) {
 		lst_add_back(&lst, lst_new(&str));
 	}
-	int len = _ft_list_size(lst);
+	int len = ft_list_size(lst);
 	printf("Longitud lista %d\n", len);
 }

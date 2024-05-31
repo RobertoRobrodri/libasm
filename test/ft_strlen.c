@@ -8,13 +8,13 @@
 # define YELLOW "\033[0;33m"
 # define BIG_STRING "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
-extern int   _ft_strlen(char *str);
+extern int   ft_strlen(char *str);
 
 int main() {
     char *str[] = {"Hola\n", "Caracola", "", BIG_STRING};
 	for (int i = 0; i < sizeof(str) / sizeof(*str); i++)
 	{
-		int result = _ft_strlen(str[i]);
+		int result = ft_strlen(str[i]);
 		int expected_result = strlen(str[i]);
 		if (result == expected_result)
 			printf(GREEN"OK\n");

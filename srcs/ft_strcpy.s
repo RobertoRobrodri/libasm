@@ -1,20 +1,20 @@
 section .text
-    global _ft_strcpy
+    global ft_strcpy
 
-_ft_strcpy:
+ft_strcpy:
 	push rdi
-	call _ft_loop
+	call ft_loop
 	pop rax
 	ret
 
-_ft_loop:
+ft_loop:
 	mov al, [rsi]
 	mov [rdi], al
 	cmp byte [rdi], 0
-	je _ft_return
+	je ft_return
 	inc rdi
 	inc rsi
-	jmp _ft_loop
+	jmp ft_loop
 
-_ft_return:
+ft_return:
 	ret

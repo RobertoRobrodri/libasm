@@ -8,20 +8,20 @@
 # define YELLOW "\033[0;33m"
 # define BIG_STRING "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
-extern char* ft_strcpy(char *dest, const char *src);
+extern char* ft_strdup(const char *s);
 
 int main() {
     char *str[] = {"Hola\n", "Caracola", "", BIG_STRING};
-	char cpy[1000], expected_cpy[1000];
 	for (int i = 0; i < sizeof(str) / sizeof(*str); i++)
 	{
-		char *expected_result = strcpy(expected_cpy, str[i]);
-		char *result = ft_strcpy(cpy, str[i]);
-		if (!strcmp(result, expected_result) && !strcmp(cpy, expected_result) &&\
-			!strcmp(result, expected_cpy) && !strcmp(cpy, expected_cpy))
+		char *expected_result = strdup(str[i]);
+		char *result = ft_strdup(str[i]);
+		if (!strcmp(result, expected_result))
 			printf(GREEN"OK\n");
 		else
 			printf(RED"KO\n");
+		free(result);
+		free(expected_result);
 	}
 	return 0;
 }

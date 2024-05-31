@@ -55,9 +55,11 @@ $(OBJ_PATH)/%.o: $(BONUS_PATH)/%.s | $(OBJ_PATH)
 	nasm -f elf64 $< -o $@
 
 test: all
-	gcc -no-pie $(FLAGS) test/ft_strlen.c $(NAME) -lc && ./a.out
-	gcc -no-pie $(FLAGS) test/ft_strcpy.c $(NAME) -lc && ./a.out
-	gcc -no-pie $(FLAGS) test/ft_strcmp.c $(NAME) -lc && ./a.out
+	gcc -no-pie $(FLAGS) test/ft_strlen.c $(NAME) -lc -o ft_strlen
+	gcc -no-pie $(FLAGS) test/ft_strcpy.c $(NAME) -lc -o ft_strcpy
+	gcc -no-pie $(FLAGS) test/ft_strcmp.c $(NAME) -lc -o ft_strcmp
+	gcc -no-pie $(FLAGS) test/ft_strdup.c $(NAME) -lc -o ft_strdup
+	gcc -no-pie $(FLAGS) test/ft_write.c $(NAME) -lc -o ft_write
 
 clean:
 	rm -rf $(NAME)

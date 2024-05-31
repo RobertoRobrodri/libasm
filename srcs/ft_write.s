@@ -1,13 +1,13 @@
 section .text
-    global _ft_write
+    global ft_write
 
-_ft_write:
+ft_write:
 	mov rax, 1 ; syscall write
 	syscall
 	cmp rax, 0
-	jc _error
+	jc error
 	ret
 
-_error:
+error:
     mov rax, -1
     ret
