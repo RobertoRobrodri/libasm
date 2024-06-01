@@ -1,3 +1,4 @@
+; char* ft_strdup(const char *s);
 section .text
     global ft_strdup
 	extern malloc

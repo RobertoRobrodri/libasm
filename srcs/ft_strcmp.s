@@ -1,7 +1,10 @@
+; int   ft_strcmp(const char *s1, const char *s2);
 section .text
     global ft_strcmp
 
 ft_strcmp:
+	push rdi
+	pop rsi
 	xor eax, eax
 
 loop:
@@ -19,5 +22,7 @@ loop:
 
 ft_return:
 	sub al, bl ; return difference
-	movsx eax, al ; for some reason cant use rax
+	movsx eax, al
+	pop rsi
+	pop rdi
 	ret

@@ -1,3 +1,4 @@
+; size_t   ft_strlen(char *str);
 section .text
     global ft_strlen
 
