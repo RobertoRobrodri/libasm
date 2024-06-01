@@ -25,6 +25,7 @@ int main() {
 		// compare with a different one expected result > 0
 		expected_result = strcmp(str[i], "random string");
 		result = ft_strcmp(str[i], "random string");
+		printf("%d && %d\n", result, expected_result);
 		if (result == expected_result)
 			printf(GREEN"OK\n");
 		else

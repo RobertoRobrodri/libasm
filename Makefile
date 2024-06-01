@@ -18,6 +18,7 @@ SRC_PATH = srcs
 BONUS_PATH = srcs_bonus
 OBJ_PATH = objects
 TEST_PATH = test
+TEST_BONUS_PATH = test_bonus
 # SOURCES #
 #
 SRC = 	ft_read.s \
@@ -35,8 +36,10 @@ OBJS	= $(addprefix $(OBJ_PATH)/, $(SRC:%.s=%.o))
 SRCS_BONUS = $(addprefix $(BONUS_PATH)/, $(SRC_BONUS))
 OBJS_BONUS = $(addprefix $(OBJ_PATH)/, $(SRC_BONUS:%.s=%.o))
 
-TEST_SRC = $(addprefix $(TEST_PATH)/, $(SRC:%.s=%.c))
-TEST_BIN = $(TEST_SRC:%.c=%_test)
+TEST_SRC   	   = $(addprefix $(TEST_PATH)/, $(SRC:%.s=%.c))
+TEST_SRC_BONUS = $(addprefix $(TEST_BONUS_PATH)/, $(SRC_BONUS:%.s=%.c))
+TEST_BIN   	   = $(TEST_SRC:%.c=%_test)
+TEST_BONUS     = $(TEST_SRC_BONUS:%.c=%_test)
 
 all: $(NAME)
 
@@ -63,11 +66,17 @@ $(TEST_BIN): %_test : %.c
 	$(CC) -no-pie $(FLAGS) $< $(NAME) -lc -o $@
 	@echo "Compiled $@ successfully."
 
+bonust: $(NAME) $(TEST_BONUS)
+
+$(TEST_BONUS): %_test : %.c
+	$(CC) -no-pie $(FLAGS) $< $(NAME) -lc -o $@
+	@echo "Compiled $@ successfully."
+
 clean:
 	rm -rf $(NAME)
 
 fclean:
-	rm -rf $(NAME) $(OBJ_PATH) $(TEST_BIN)
+	rm -rf $(NAME) $(OBJ_PATH) $(TEST_BIN) $(TEST_BONUS)
 
 re: fclean all
 

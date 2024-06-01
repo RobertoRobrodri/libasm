@@ -4,7 +4,7 @@ section .text
 
 ft_strcmp:
 	push rdi
-	pop rsi
+	push rsi
 	xor eax, eax
 
 loop:
