@@ -3,26 +3,21 @@ section .text
     global ft_strcmp
 
 ft_strcmp:
-	push rdi
-	push rsi
-	xor eax, eax
+	xor rax, rax
 
 loop:
 	mov al, [rdi] ; mov to al to compare byte by byte
-	mov bl, [rsi]
-	cmp al, bl
-	jne ft_return ; not equal
 	cmp al, 0 ; reach NULL
 	je ft_return
-	cmp bl, 0 ; reach NULL
+	cmp byte [rsi], 0 ; reach NULL
 	je ft_return
+	cmp byte al, [rsi]
+	jne ft_return ; not equal
 	inc rdi
 	inc rsi
 	jmp loop
 
 ft_return:
-	sub al, bl ; return difference
-	movsx eax, al
-	pop rsi
-	pop rdi
+	sub al, [rsi] ; return difference
+	movzx rax, al
 	ret
