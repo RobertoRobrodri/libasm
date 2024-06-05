@@ -12,6 +12,7 @@ extern int   ft_strcmp(const char *s1, const char *s2);
 
 int main() {
     char *str[] = {"Hola\n", "Caracola", "", BIG_STRING};
+	// char *str[] = {"b"};
 	for (int i = 0; i < sizeof(str) / sizeof(*str); i++)
 	{
 		// compare with itself expected result == 0
@@ -25,7 +26,7 @@ int main() {
 		// compare with a different one expected result > 0
 		expected_result = strcmp(str[i], "random string");
 		result = ft_strcmp(str[i], "random string");
-		printf("%d && %d\n", result, expected_result);
+		// printf("%d && %d\n", result, expected_result);
 		if (result == expected_result)
 			printf(GREEN"OK\n");
 		else

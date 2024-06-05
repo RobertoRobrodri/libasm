@@ -10,7 +10,7 @@ RESET 	= "\033[1;0m"
 #
 NAME 	= libasm.a
 CC 		= gcc
-FLAGS   = -g3 -fsanitize=address
+FLAGS   = -g
 
 # PATHS #
 #
@@ -48,7 +48,7 @@ $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.s | $(OBJ_PATH)
-	nasm -f elf64 $< -o $@
+	nasm -f elf64 $(FLAGS) $< -o $@
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
@@ -59,7 +59,7 @@ bonus: $(OBJS_BONUS)
 	ranlib $(NAME)
 
 $(OBJ_PATH)/%.o: $(BONUS_PATH)/%.s | $(OBJ_PATH)
-	nasm -f elf64 $< -o $@
+	nasm -f elf64 $(FLAGS) $< -o $@
 
 test: $(NAME) $(TEST_BIN)
 

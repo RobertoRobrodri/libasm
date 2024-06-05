@@ -19,5 +19,5 @@ loop:
 
 ft_return:
 	sub al, [rsi] ; return difference
-	movzx rax, al
+	movsx rax, al ; sign extended
 	ret
