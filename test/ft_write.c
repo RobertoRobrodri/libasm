@@ -25,7 +25,8 @@ int main() {
 		int expected_result = write(devNull, str[i], strlen(str[i]));
 		int real_errno = errno;
 		int result = ft_write(devNull, str[i], strlen(str[i]));
-		if (result == expected_result/* && real_errno == errno*/)
+		printf("%d && %d\n", errno, real_errno);
+		if (result == expected_result && real_errno == errno)
 			printf(GREEN"OK\n");
 		else
 			printf(RED"KO\n");
@@ -34,7 +35,8 @@ int main() {
 		expected_result = write(devNull, str[i], strlen(str[i]) - 1);
 		real_errno = errno;
 		result = ft_write(devNull, str[i], strlen(str[i]) - 1);
-		if (result == expected_result/* && real_errno == errno*/)
+		printf("%d && %d\n", errno, real_errno);
+		if (result == expected_result && real_errno == errno)
 			printf(GREEN"OK\n");
 		else
 			printf(RED"KO\n");
@@ -44,7 +46,8 @@ int main() {
 		expected_result = write(-1, str[i], strlen(str[i]));
 		real_errno = errno;
 		result = ft_write(-1, str[i], strlen(str[i]));
-		if (result == expected_result/* && real_errno == errno*/)
+		printf("%d && %d\n", errno, real_errno);
+		if (result == expected_result && real_errno == errno)
 			printf(GREEN"OK\n");
 		else
 			printf(RED"KO\n");
